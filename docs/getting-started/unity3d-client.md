@@ -124,6 +124,9 @@ ExampleRoomState room = await ExampleManager.Instance.JoinOrCreate<ExampleRoomSt
 
 ### OnJoin
 - Gets called after the client has successfully connected to the room
+```csharp
+room.OnJoin += OnJoin;
+```
 
 ### OnLeave
 - Gets called after the client has been disconnected from the room
@@ -146,6 +149,14 @@ private static void OnStateChangeHandler(ExampleRoomState state, bool isFirstSta
 ### OnError
 - When a room related error occurs on the server it will be reported with this event.
 - Has parameters for an error code and an error message.
+```csharp
+void OnError(int code, string message)
+{
+    //TODO: Handle error here
+}
+
+room.OnError += OnError;
+```
 
 ## Room Messages:
 You have the ability to listen for or to send custom messages from/to a room instance on the server.
